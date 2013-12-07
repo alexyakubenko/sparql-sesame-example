@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title TF-IDF/BM25 Full Text Search
+    %link{ :rel => :stylesheet, :href => '/stylesheets/style.css' }
+    %script{ :type => 'text/javascript', :src => '/javascripts/jquery.js' }
+    %script{ :type => 'text/javascript', :src => '/javascripts/app.js' }
+  %body
+    - Dir["#{ Dir.pwd }/sparql_examples/*"].each do |example_file_name|
+      - content = IO.read(example_file_name).force_encoding('UTF-8')
+      - lines = content.split("\n")
+      %a.example{ :'data-sparql' => "#{ lines[1..-1].join }" }= lines[0]
+    .content
+      %textarea
+      %button Search
+      .result
+    .documents

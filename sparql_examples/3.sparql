@@ -1,0 +1,11 @@
+В какие разделы публикаются статьи от авторов?
+PREFIX :<http://www.owl-ontologies.com/Ontology1386373464.owl#>
+
+SELECT DISTINCT ?author_name ?section_name WHERE
+  {
+    ?article :authored_by ?author;
+             :belongs_to ?section.
+    ?section :name ?section_name.
+    ?author :name ?author_name.
+  }
+ORDER BY ?author_name

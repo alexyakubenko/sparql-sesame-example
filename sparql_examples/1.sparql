@@ -1,0 +1,13 @@
+Статьи написанные авторами с зарплатой больше 50000
+PREFIX :<http://www.owl-ontologies.com/Ontology1386373464.owl#>
+
+SELECT ?title ?section_name ?author_name ?salary WHERE
+  {
+    ?article :authored_by ?author;
+             :title ?title .
+    ?author :salary ?salary.
+    FILTER(?salary > 50000).
+    ?article :belongs_to ?section.
+    ?section :name ?section_name.
+    ?author :name ?author_name
+  }

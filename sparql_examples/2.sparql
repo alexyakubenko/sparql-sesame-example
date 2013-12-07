@@ -1,0 +1,16 @@
+Статьи, написанные под руководством редактора.
+PREFIX :<http://www.owl-ontologies.com/Ontology1386373464.owl#>
+
+SELECT ?editor_name ?employee_name ?article_title ?section_name WHERE
+  {
+    ?editor :responsible_for ?employee;
+             :name ?editor_name.
+
+    ?employee :name ?employee_name.
+
+    ?article :authored_by ?employee;
+             :title ?article_title;
+             :belongs_to ?section.
+
+    ?section :name ?section_name.
+  }
